@@ -1,13 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-const index = require('./modules/index')
-router.use('/', index)
+const search = require('./modules/search')
+router.use('/search', search)
 
-const search = require('./modules/restaurant')
-router.use('/', search)
+const restaurant = require('./modules/restaurant')
+router.use('/restaurant', restaurant)
 
 const show = require('./modules/show')
-router.use('/', show)
+router.use('/show', show)
+
+const index = require('./modules/index')
+router.use('/', index)
 
 module.exports = router
