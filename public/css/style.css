@@ -2,6 +2,16 @@ header {
   overflow: hidden;
 }
 
+.navbar {
+  background-color: #FFEEDD;
+  color: #000024;
+}
+
+footer {
+  background-color: #FFEEDD;
+  color: #000024;
+}
+
 .navbar .navbar-brand {
   color: #4592af;
 }

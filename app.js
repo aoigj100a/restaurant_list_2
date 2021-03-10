@@ -13,6 +13,10 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
+app.get('/restaurants/1',(req,res)=>{
+    res.render('restaurants')
+})
+
 app.listen(port , ()=>{
     console.log(`已經連線到http://localhost:${port}`)
 })
