@@ -1,15 +1,26 @@
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  border: 1px solid #2c2c2c;
+  outline: none;
+  background-color: #fff;
+  color: #2c2c2c;
+  cursor: pointer;
+  padding: 10px 15px 15px 15px;
+  border-radius: 8px;
+}
+
 header {
   overflow: hidden;
 }
 
 .navbar {
   background-color: #FFEEDD;
-  color: #000024;
 }
 
 footer {
   background-color: #FFEEDD;
-  color: #000024;
 }
 
 .navbar .navbar-brand {
