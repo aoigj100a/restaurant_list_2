@@ -9,13 +9,10 @@ app.set('view engine' , 'hbs')
 
 app.use(express.static('public'))
 
-app.get('/',(req,res)=>{
-    res.render('index')
-})
+const routes = require('./routes')
+app.use(routes)
 
-app.get('/restaurants/1',(req,res)=>{
-    res.render('restaurants')
-})
+
 
 app.listen(port , ()=>{
     console.log(`已經連線到http://localhost:${port}`)
