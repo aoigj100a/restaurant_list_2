@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
-
-const restaurants = require('../../restaurant.json').results
+const Restaurant = require('../../models/restaurant')
 
 router.get('/:restaurant_id', (req, res) => {
-    const restaurant = restaurants.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-    res.render('show', { restaurant })
+    const id = req.params.restaurant_id
+    Restaurant.findOne({ id: id }).lean()
+    .then((restaurant)=>res.render('show',{restaurant}))
+    .catch(err => console.log(err))
 })
 
 module.exports = router

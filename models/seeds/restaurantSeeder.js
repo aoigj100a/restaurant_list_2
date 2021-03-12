@@ -9,7 +9,6 @@ db.once('open', () => {
             console.log(err);
         } else {
             console.log('儲存成功:', docs)
-            
         }
         db.close() // 使用過後關閉db
     })
