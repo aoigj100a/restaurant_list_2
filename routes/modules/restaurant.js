@@ -56,11 +56,30 @@ router.delete('/delete/:restaurant_id', (req, res) => {
 
 //路線edit
 router.get('/:restaurant_id', (req, res) => {
-    res.render('edit')
+    const id = req.params.restaurant_id
+    Restaurant.findOne({ id: id }).lean()
+        .then(restaurant => res.render('edit', { restaurant }))
+        .catch(err => console.log(err))
 })
 
 router.put('/:restaurant_id', (req, res) => {
-
+    const id = req.params.restaurant_id
+    const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
+    return Restaurant.findOne({ id: id })
+        .then(restaurant => {  
+            restaurant.name = name
+            restaurant.name_en = name_en
+            restaurant.category = category
+            restaurant.image = image
+            restaurant.location = location
+            restaurant.phone = phone
+            restaurant.google_map = google_map
+            restaurant.rating = rating
+            restaurant.description = description
+            return restaurant.save()
+        })
+        .then(() => res.redirect(`/show/${id}`))
+        .catch(error => console.log(error))
 })
 
 router.get('/', (req, res) => {
