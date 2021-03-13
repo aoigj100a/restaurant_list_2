@@ -4,17 +4,17 @@ const Restaurant = require('../../models/restaurant')
 
 const multer = require('multer')
 let myStorage = multer.diskStorage({
-    destination: (req, file, cb)=> {
+    destination: (req, file, cb) => {
         cb(null, "public/img/uploads");
     },
-    filename: (req, file, cb)=> {
+    filename: (req, file, cb) => {
         cb(null, Date.now() + '-' + file.originalname);
     }
 });
 
 let upload = multer({
     storage: myStorage,
-    fileFilter: (req, file, cb)=> {
+    fileFilter: (req, file, cb) => {
         if (file.mimetype != 'image/png' | 'image/jpg' | 'image/gif') {
             return cb(new Error('Wrong file type'));
         }
@@ -22,15 +22,11 @@ let upload = multer({
     }
 });
 
-router.get('/', (req, res) => {
-    res.render('index')
-})
-
 router.get('/new', (req, res) => {
     res.render('new')
 })
 
-router.post('/new', upload.single('image'), async(req, res) => {
+router.post('/new', upload.single('image'), async (req, res) => {
     // 取得總數以新增id
     const count = await Restaurant.countDocuments({}).exec()
     const id = count + 1
@@ -44,9 +40,17 @@ router.post('/new', upload.single('image'), async(req, res) => {
 })
 
 router.get('/delete/:restaurant_id', (req, res) => {
-    res.render('delete')
+    const id = req.params.restaurant_id
+    Restaurant.findOne({ id: id }).lean()
+        .then(restaurant => res.render('delete', { restaurant }))
+        .catch(err => console.log(err))
 })
 router.delete('/delete/:restaurant_id', (req, res) => {
+    const id = req.params.restaurant_id
+    Restaurant.findOne({ id: id })
+        .then(restaurant => restaurant.remove())
+        .then(() => res.redirect('/'))
+        .catch(error => console.log(error))
 
 })
 
@@ -57,6 +61,10 @@ router.get('/:restaurant_id', (req, res) => {
 
 router.put('/:restaurant_id', (req, res) => {
 
+})
+
+router.get('/', (req, res) => {
+    res.render('index')
 })
 
 module.exports = router

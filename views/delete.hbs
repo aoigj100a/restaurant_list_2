@@ -6,12 +6,12 @@
   <div class="row">
 
 
-    <h2>確定要刪除【{{lists.name}}】嗎?</h2>
-    <form action="/action/delete/{{lists.id}}/y?_method=DELETE" method="POST">
+    <h2>確定要刪除【{{restaurant.name}}】嗎?</h2>
+    <form action="/restaurant/delete/{{restaurant.id}}?_method=DELETE" method="POST">
       <div class="control-group pb-4">
         <div class="controls col">
-          <input type="submit" class="btn btn-success" value="確定" name="Y">
-          <input type="submit" class="btn btn-warning" value="返回" name="N">
+          <input type="submit" class="btn btn-success" value="確定">
+          <a href='/' class="btn btn-warning">返回</a>
         </div>
       </div>
     </form>
