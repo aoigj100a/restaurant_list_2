@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+const user = require('./modules/user')
+router.use('/user', user)
+
 const search = require('./modules/search')
 router.use('/search', search)
 
