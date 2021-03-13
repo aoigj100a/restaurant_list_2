@@ -1,0 +1,22 @@
+<!-- 標題 -->
+<h1 class="mb-1 restaurant-show-title">刪除餐廳資訊</h1>
+
+<!-- 表單 -->
+<div class="container">
+  <div class="row">
+
+
+    <h2>確定要刪除【{{lists.name}}】嗎?</h2>
+    <form action="/action/delete/{{lists.id}}/y?_method=DELETE" method="POST">
+      <div class="control-group pb-4">
+        <div class="controls col">
+          <input type="submit" class="btn btn-success" value="確定" name="Y">
+          <input type="submit" class="btn btn-warning" value="返回" name="N">
+        </div>
+      </div>
+    </form>
+
+
+  </div>
+</div>
+</div>
