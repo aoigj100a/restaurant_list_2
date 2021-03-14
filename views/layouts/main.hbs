@@ -22,6 +22,21 @@
         <!-- navigation -->
         <nav class="navbar navbar-light">
             <div class="container">
+                {{#if isAuthenticated}}
+                <a class="navbar-brand" href="/">
+                    <img src="/img/logo.png" width="30" height="25" class="d-inline-block align-top" alt="我的餐廳清單">
+                    {{user.name}}的餐廳清單
+                </a>
+                <div>
+                   
+
+                    <a id="logout" class="text-dark ml-3" href="/user/logout">
+                        <i class="fas fa-user-circle"></i>
+                        登出
+                    </a>
+
+                </div>
+                {{else}}
                 <a class="navbar-brand" href="/">
                     <img src="/img/logo.png" width="30" height="25" class="d-inline-block align-top" alt="我的餐廳清單">
                     我的餐廳清單
@@ -37,6 +52,7 @@
                     </a>
 
                 </div>
+                {{/if}}
             </div>
 
         </nav>
