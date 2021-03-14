@@ -16,6 +16,6 @@ const show = require('./modules/show')
 router.use('/show', show)
 
 const index = require('./modules/index')
-router.use('/', index)
+router.use('/',authenticator, index) // 設定認證取得req.user
 
 module.exports = router

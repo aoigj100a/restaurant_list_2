@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <h2>確定要刪除【{{restaurant.name}}】嗎?</h2>
-    <form action="/restaurant/delete/{{restaurant.id}}?_method=DELETE" method="POST">
+    <form action="/restaurant/delete/{{restaurant._id}}?_method=DELETE" method="POST">
       <div class="control-group pb-4">
         <div class="controls col">
           <input type="submit" class="btn btn-success" value="確定">
