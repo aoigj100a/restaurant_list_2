@@ -7,8 +7,12 @@ const session = require('express-session')
 const usePassport = require('./config/passport')
 const flash = require('connect-flash')
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 app.engine('hbs',exphbs({defaultLayout:'main', extname: '.hbs'}))
 app.set('view engine' , 'hbs')
@@ -22,7 +26,7 @@ app.use(express.static('public'))
 // 設定session
 // process.env.SESSION_SECRET,
 app.use(session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
   }))
@@ -39,7 +43,6 @@ app.use(session({
   })
 
 app.use((req, res, next) => {
-    console.log(req.user)
     res.locals.isAuthenticated = req.isAuthenticated()
     res.locals.user = req.user
     next()

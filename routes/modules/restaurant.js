@@ -69,7 +69,7 @@ router.put('/:restaurant_id', (req, res) => {
     const userId = req.user._id
     const _id = req.params.restaurant_id
     const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
-    return Restaurant.findOne({ _id, userId })
+    return Restaurant.findOne({ userId, _id })
         .then(restaurant => {
             restaurant.name = name
             restaurant.name_en = name_en
@@ -82,7 +82,7 @@ router.put('/:restaurant_id', (req, res) => {
             restaurant.description = description
             return restaurant.save()
         })
-        .then(() => res.redirect(`/show/${id}`))
+        .then(() => res.redirect(`/show/${_id}`))
         .catch(error => console.log(error))
 })
 
