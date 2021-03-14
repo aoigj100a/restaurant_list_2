@@ -1,21 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
+const user = require('./modules/user')
+const search = require('./modules/search')
+const show = require('./modules/show')
+const restaurant = require('./modules/restaurant')
+const index = require('./modules/index')
+
 const { authenticator } = require('../middleware/auth')  // 掛載 middleware
 
-const user = require('./modules/user')
 router.use('/user', user)
-
-const search = require('./modules/search')
 router.use('/search', search)
-
-const restaurant = require('./modules/restaurant')
-router.use('/restaurant',authenticator, restaurant)
-
-const show = require('./modules/show')
 router.use('/show', show)
-
-const index = require('./modules/index')
+router.use('/restaurant',authenticator, restaurant)
 router.use('/',authenticator, index) // 設定認證取得req.user
 
 module.exports = router
