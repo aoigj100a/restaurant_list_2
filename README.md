@@ -4,6 +4,9 @@
 
 ## 畫面
 
+![image](https://github.com/aoigj100a/restaurant_list_2/blob/main/public/img/screencapture-localhost-3000-2021-03-14-21_00_42.png?raw=true
+)
+
 ## 環境建置與需求
 1. Node.js v12.19.0
 2. Express v4.17.1
