@@ -5,10 +5,11 @@ const passport = require('passport')
 const bcrypt = require('bcryptjs')
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  console.log(req.flash('error'))
+  res.render('login',{message: req.flash('error')})
 })
 
-router.post('/login', passport.authenticate('local', {
+router.post('/login', passport.authenticate('local-login', {
   successRedirect: '/',
   failureRedirect: '/user/login',
   failureFlash: true

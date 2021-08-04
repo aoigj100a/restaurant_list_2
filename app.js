@@ -23,32 +23,26 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(express.static('public'))
 
-// 設定session
-// process.env.SESSION_SECRET,
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  resave: true
 }))
 
 usePassport(app)
-app.use(flash()) // 掛載套件
+app.use(flash())
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
-  res.locals.success_msg = req.flash('success_msg') // 設定 success_msg 訊息
-  res.locals.warning_msg = req.flash('warning_msg') // 設定 warning_msg 訊息
-  next()
-})
-
-app.use((req, res, next) => {
-  res.locals.isAuthenticated = req.isAuthenticated()
-  res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.error = req.flash('error')
   next()
 })
 
 app.use(routes)
 
-app.listen(port, () => {
+app.listen(port, (err) => {
+  if (err) console.log(err);
   console.log(`已經連線到http://localhost:${port}`)
 })
