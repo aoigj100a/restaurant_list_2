@@ -25,12 +25,11 @@ app.use(express.static('public'))
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  saveUninitialized: true,
-  resave: true
+  resave: true,
+  saveUninitialized: true
 }))
-
-usePassport(app)
 app.use(flash())
+usePassport(app)
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
