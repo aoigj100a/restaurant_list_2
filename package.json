@@ -1,7 +1,9 @@
 {
   "name": "restaurant-list-crud",
   "version": "1.0.0",
-  "description": "",
+  "devDependencies": {
+    "standard": "*"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

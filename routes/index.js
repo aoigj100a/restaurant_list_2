@@ -8,13 +8,12 @@ const restaurant = require('./modules/restaurant')
 const index = require('./modules/index')
 const auth = require('./modules/auth')
 
-const { authenticator } = require('../middleware/auth')  // 掛載 middleware
+const { authenticator } = require('../middleware/auth') // 掛載 middleware
 
 router.use('/user', user)
 router.use('/search', search)
 router.use('/show', show)
 router.use('/auth', auth)
-router.use('/restaurant',authenticator, restaurant)
-router.use('/',authenticator, index) // 設定認證取得req.user
-
+router.use('/restaurant', authenticator, restaurant)
+router.use('/', authenticator, index)
 module.exports = router
