@@ -2,15 +2,15 @@ const passport = require('passport')
 const bcrypt = require('bcryptjs')
 const LocalStrategy = require('passport-local').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
-const flash = require('connect-flash');
+const flash = require('connect-flash')
 
 const User = require('../models/user')
 
 module.exports = app => {
-  app.use(flash());
+  app.use(flash())
   app.use(passport.initialize())
   app.use(passport.session())
-  passport.use('local-login',new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+  passport.use('local-login', new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {

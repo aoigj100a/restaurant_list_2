@@ -42,6 +42,6 @@ app.use((req, res, next) => {
 app.use(routes)
 
 app.listen(port, (err) => {
-  if (err) console.log(err);
+  if (err) console.log(err)
   console.log(`已經連線到http://localhost:${port}`)
 })
