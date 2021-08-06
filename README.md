@@ -21,6 +21,9 @@
 11. passport-facebook v3.0.0
 12. passport-local v1.0.0
 13. express-session v1.17.1
+14. dotenv v8.2.0
+    
+    **.env環境變數不能夠被上傳到github，使用.env.example的方式做傳遞。**
 
 ## 安裝與執行步驟 (Installation and Execution)
 1. 將專案複製到本機 (兩種方法)
@@ -44,6 +47,7 @@
 
 6. 使用預設使用者登入 或者 註冊新帳號登入
 >  預設使用者如下
+
 
 **user1：**
 帳號：user1@example.com
