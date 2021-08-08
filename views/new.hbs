@@ -9,10 +9,10 @@
         <fieldset id="tab011 ">
           <div class="control-group pb-4">
             <!-- 餐廳中文名稱 -->
-            <label class="control-label h5 col" for="name">中文名稱：</label>
+            <label class="control-label h5 col" for="name">中文名稱：<sup>*</sup></label>
             <div class="controls col-6">
-              <input type="text" id="name" name="name" placeholder="字數需大於三個字，必填。" minlength="3" class="my-input  form-control" required>
-              <span class="text-secondary">請輸入中文。</span>
+              <input type="text" id="name" name="name" placeholder="請輸入中文。" minlength="3" class="my-input  form-control" required>
+              <span class="text-secondary">請輸入中文，字數需大於三個字，必填。</span>
             </div>
           </div>
 
@@ -20,14 +20,14 @@
             <!-- 餐廳英文名稱 -->
             <label class="control-label h5 col" for="name_en">英文名稱：</label>
             <div class="controls col-6">
-              <input type="text" id="name_en" name="name_en" placeholder="輸入英文，並大於三個字，非必填。" pattern="[A-Za-z\s']{3,}"  class="my-input form-control ">
-              <span class="text-secondary">請輸入英文。</span>
+              <input type="text" id="name_en" name="name_en" placeholder="請輸入英文。" pattern="[A-Za-z\s']{3,}"  class="my-input form-control ">
+              <span class="text-secondary">請輸入英文，並大於三個字，非必填。</span>
             </div>
           </div>
 
           <div class="control-group pb-4">
             <!-- 餐廳種類 -->
-            <label class="control-label h5 col" for="category">種類：</label>
+            <label class="control-label h5 col" for="category">種類：<sup>*</sup></label>
             <div class="controls col-6">
               <select name="category" id="category" placeholder="選取種類" class="my-input form-control" required>
                <option selected disabled>選取種類。</option>
@@ -52,7 +52,7 @@
 
           <div class="control-group pb-4">
             <!-- 餐廳地址 -->
-            <label class="control-label h5 col" for="location">地址：</label>
+            <label class="control-label h5 col" for="location">地址：<sup>*</sup></label>
             <div class="controls col">
               <input type="text" id="location" name="location" placeholder="填入餐廳所在之處，必填。" class="my-input form-control" required>
               <span class="text-secondary">輸入完整地址。</span>
@@ -61,10 +61,10 @@
 
           <div class="control-group pb-4">
             <!-- 餐廳電話 -->
-            <label class="control-label h5 col" for="phone">電話：</label>
+            <label class="control-label h5 col" for="phone">電話：<sup>*</sup></label>
             <div class="controls col-6">
-              <input type="text" id="phone" name="phone" placeholder="00-0000-0000 或 0000-000-000" pattern="[0-9]{2,4}-[0-9]{3,4}-[0-9]{3,5}" class="my-input form-control" required>
-              <span class="text-secondary">輸入完整室內電話。</span>
+              <input type="text" id="phone" name="phone" placeholder="輸入完整電話。" pattern="[0-9]{2,4}-[0-9]{3,4}-[0-9]{3,5}" class="my-input form-control" required>
+              <span class="text-secondary">格式：00-0000-0000 或 0000-000-000</span>
             </div>
           </div>
 
@@ -72,16 +72,16 @@
             <!-- 餐廳google map -->
             <label class="control-label h5 col" for="google_map">google map：</label>
             <div class="controls col">
-              <input type="text" id="google_map" name="google_map" placeholder="google map網址，非必填。" class="my-input form-control">
+              <input type="text" id="google_map" name="google_map" placeholder="google map網址，非必填。" maxlength="200" class="my-input form-control">
               <span class="text-secondary">輸入完整google map位址。</span>
             </div>
           </div>
 
           <div class="control-group pb-4">
             <!-- 餐廳星數 -->
-            <label class="control-label h5 col" for="rating">星數：</label>
+            <label class="control-label h5 col" for="rating">星數：<sup>*</sup></label>
             <div class="controls col-6">
-              <input type="text" id="rating" name="rating" placeholder="最多五顆星" min="1" max="5" class="my-input form-control" required>
+              <input type="number" id="rating" name="rating" placeholder="最多五顆星" min="1" max="5" class="my-input form-control" required>
               <span class="text-secondary">選取數值</span>
             </div>
           </div>
@@ -91,7 +91,7 @@
             <!-- 餐廳詳細資訊 -->
             <label class="control-label h5 col" for="description">詳細資訊：</label>
             <div class="controls col">
-              <textarea id="description" name="description" class="my-input form-control" rows="3" maxlength="200">在這裏表達對餐廳的喜愛，講講他的特色吧！</textarea>
+              <textarea id="description" name="description" class="my-input form-control" placeholder="在這裏表達對餐廳的喜愛，講講他的特色吧！" rows="3" maxlength="200"></textarea>
               <span class="text-secondary">輸入詳細資訊。</span>
             </div>
           </div>
