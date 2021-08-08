@@ -14,9 +14,11 @@ const myStorage = multer.diskStorage({
 
 const upload = multer({
   storage: myStorage,
+  limits: { fileSize: 2000000 },
   fileFilter: (req, file, cb) => {
-    if (file.mimetype != 'image/png' | 'image/jpg' | 'image/gif' | 'image/jpeg') {
-      return cb(new Error('Wrong file type'))
+    if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
+      req.file_error = "file not allowed";
+      return cb(new Error('req.file_error'));
     }
     cb(null, true)
   }
@@ -32,7 +34,7 @@ router.post('/new', upload.single('image'), async (req, res) => {
   const count = await Restaurant.countDocuments({}).exec()
   const id = count + 1
   // 修掉路徑裡的 public 存正確的路徑到資料庫
-  const image = req.file.path.replace('public', '')
+  const image = (req.file.path) ? req.file.path.replace('public', '') : ""
   const { name, name_en, category, location, phone, google_map, rating, description } = req.body
   return Restaurant.create({ userId, id, name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/'))
